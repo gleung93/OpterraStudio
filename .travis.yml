@@ -15,4 +15,4 @@ deploy:
   skip_cleanup: true
   local_dir: dist
   on:
-    repo: gleung93/OpterraStudio
+    repo: gleung93/OpterraStudioWeb
