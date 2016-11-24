@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    title= Dronez
+    link(rel='stylesheet', href='style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    script(
+      src="https://code.jquery.com/jquery-2.2.4.min.js",
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=",
+      crossorigin="anonymous"
+      )
+
+    //-Mixins
+    include components/hero.pug
+
+  body
+
+    #set-height
+    video(id='v0', tabindex="0",  autobuffer preload)
+      source(src="images/desert_pull2.mp4" type="video/mp4")
+      Your browser does not support the video tag.
+
+    //-Javascript
+    script(src='script.js')

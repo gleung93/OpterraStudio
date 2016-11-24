@@ -9,6 +9,10 @@ module.exports = function(grunt) {
         files: 'src/sass/**/*.scss',
         tasks: ['sass'],
       },
+      js: {
+        files: 'src/scripts/*.js',
+        tasks: ['concat'],
+      },
       pug: {
         files: 'src/**/*.pug',
         tasks: ['pug'],
@@ -45,7 +49,8 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'dist/index.html': ['src/index.pug', 'src/components/*.pug']
+          'dist/index.html': ['src/index.pug', 'src/components/*.pug'],
+          'dist/video.html': ['src/video.pug', 'src/components/*.pug']
         }
       }
     },
@@ -72,6 +77,13 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      dist: {
+        src: 'src/scripts/*.js',
+        dest: 'dist/script.js',
+      },
+    },
+
     compress: {
       main: {
         options: {
@@ -94,9 +106,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('default', ['connect:server','watch']);
-  grunt.registerTask('build-dev', ['sass','pug','sync']);
-  grunt.registerTask('build-prod', ['sass','pug','compress',]);
+  grunt.registerTask('build-dev', ['sass','concat','pug','sync']);
+  grunt.registerTask('build-prod', ['sass','pug','compress']);
 };
